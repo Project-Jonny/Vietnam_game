@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <title>IY店舗漢字テスト</title>
+    <style>
+     * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       background-color: transparent;
+       border-style: none;
+     }
+     html, body {
+        height: 100%;
+     }
+     .container {
+       background-image: url("image/006.jpg");
+       background-color:rgba(255,255,255,0.2);
+       background-blend-mode:lighten;
+       background-size: cover;
+       background-attachment: fixed;
+       background-position: center center;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       position: absolute;
+       top: 0px;
+       right: 0px;
+       bottom: 0px;
+       left: 0px;
+     }
+     .question {
+       font-size: 32px;
+       font-weight: bold;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       color: black;
+     }
+     .answer {
+       font-size: 32px;
+       margin: 16px;
+       border: none;
+       appearance: none;
+       padding: .5em .6em;
+       display: inline-block;
+       border: 2px solid #ccc;
+       border-color: white;
+       border-radius: 4px;
+       border-width: 4px;
+       box-shadow:0px 0px 0px 3px black;
+       vertical-align: middle;
+       text-align: center;
+       background-color: rgba( 0, 0, 0, 0.75 );
+       color: white;
+       height: 5em;
+       width: 20em;
+       position: relative;
+       top: 20px;
+     }
+     .answer:focus {
+       outline: 0;
+       border-color: white;
+     }
+     .center {
+       position: relative;
+     }
+     .center img {
+       display: block;
+       position: relative;
+       top: 18%;
+       z-index: 0;
+     }
+     .center img:hover{
+       animation: rumble 0.1s linear infinite;
+     }
+    @keyframes rumble{
+       0%	{transform:rotate(0deg)	translate(0,0);}
+       12.5%	{transform:rotate(0.4deg)	translate(1px,-1px);}
+       25%	{transform:rotate(0.8deg)	translate(0px,1px);}
+       37.5%	{transform:rotate(0.4deg)	translate(-1px,0);}
+       50%	{transform:rotate(0deg)	translate(0,0);}
+       62.5%	{transform:rotate(-0.4deg)	translate(1px,0);}
+       75%	{transform:rotate(-0.8deg)	translate(0,1px);}
+       87.5%	{transform:rotate(-0.4deg)	translate(-1px,-1px);}
+       100%	{transform:rotate(0deg)	translate(0,0);}
+     }
+     .center .question {
+       margin: auto;
+       width: 100%;
+       height: 1em;
+       position: absolute;
+       top: 75%;
+       right: 0;
+       bottom: 0;
+       left: 0;
+       z-index: 1000;
+     }
+
+      .modal{
+      position: fixed;
+      left: 10px;
+      top: 10px;
+      z-index: 100;
+      }
+      
+    </style>
+  </head>
+  <body> 
+     <div class="modal">
+        <button type="button" onclick="history.back()">
+          <img src="image/003.png" alt="戻る" width="50" height="60"/>
+        </button>
+     </div>
+
+     <div class="container">
+      <div class="center">
+        <img src="image/002.png" alt="monster" width="450" height="450"/>
+        <div class="question"></div>
+     </div>
+       <input class="answer" value="" />
+       <script>
+          var ans = document.getElementsByClassName('answer')[0];
+          ans.focus();
+       </script>
+     </div>
+     <script>
+       const questions = [
+       '旭川',
+       '帯広',
+       '北見',
+       '琴似',
+       'アリオ札幌',
+       'すすきの',
+       '屯田',
+       '函館',
+       '福住',
+       '青森',
+       '五所川原',
+       '八戸沼館',
+       '弘前',
+       '花巻',
+       '石巻あけぼの',
+       'アリオ仙台泉',
+       '郡山',
+       '平',
+       '福島',
+       '丸大新潟',
+       '甲府昭和',
+       'アリオ上田',
+       '長野',
+       '南松本',
+       '静岡',
+       '沼津',
+       '三島',
+       'プライムツリー赤池',
+       '安城',
+       '尾張旭',
+       '刈谷',
+       '知多',
+       '柳津',
+       'あべの',
+       'アリオ鳳',
+       '津久野',
+       'アリオ八尾',
+       '明石',
+       '加古川',
+       '甲子園',
+       '赤羽',
+       '昭島',
+       '阿佐ヶ谷',
+       '綾瀬',
+       '梅島',
+       '王子',
+       '大井町',
+       '大森',
+       'アリオ葛西',
+       '金町',
+       '上板橋',
+       'アリオ亀有',
+       '亀有駅前',
+       'アリオ北砂',
+       '木場',
+       '小岩',
+       '国領',
+       '上石神井公園',
+       '新宿富久',
+       '千住',
+       '高砂',
+       '竹の塚',
+       '立石',
+       '田無',
+       '多摩センター',
+       '中野',
+       'アリオ西新井',
+       'プライス西新井',
+       '西日暮里',
+       '練馬高野台',
+       '拝島',
+       '八王子',
+       '東久留米',
+       '東村山',
+       '東大和',
+       '曳舟',
+       '南大沢',
+       '三ノ輪',
+       '武蔵小金井',
+       '武蔵境',
+       '四つ木',
+       '早稲田',
+       '厚木',
+       '伊勢原',
+       '大船',
+       '小田原',
+       '桂台',
+       '上大岡',
+       '上永谷',
+       '川崎',
+       '川崎港町',
+       '古淵',
+       '相模原',
+       'プライス湘南台',
+       '湘南台',
+       'ららぽーと湘南平塚',
+       '新百合ヶ丘',
+       '瀬谷',
+       '立場',
+       'たまプラーザ',
+       '茅ヶ崎',
+       '綱島',
+       '鶴見',
+       '能見台',
+       'アリオ橋本',
+       '藤沢',
+       '溝ノ口',
+       'グランツリー武蔵小杉',
+       '武蔵小杉駅前',
+       '大和鶴間',
+       '洋光台',
+       'ららぽーと横浜',
+       '横浜別所',
+       '若葉台',
+       '姉崎',
+       '我孫子',
+       '我孫子南口',
+       'アリオ市原',
+       'おおたかの森',
+       '柏',
+       'アリオ柏',
+       '鎌ヶ谷',
+       'プライス五香',
+       'アリオ蘇我',
+       '津田沼',
+       '流山',
+       'プライス野田',
+       '船橋',
+       '幕張',
+       '松戸',
+       '八千代',
+       '八柱',
+       '四街道',
+       'アリオ上尾',
+       '上尾駅前',
+       '浦和',
+       '大宮',
+       '大宮宮原',
+       '春日部',
+       '加須',
+       'アリオ川口',
+       '川越',
+       '久喜',
+       '小手指',
+       '埼玉大井',
+       'ららぽーと新三郷',
+       'プライスせんげん台',
+       '草加',
+       '錦町',
+       'アリオ深谷',
+       '三郷',
+       '和光',
+       'アリオ鷲宮',
+       '日立',
+       '竜ケ崎',
+       '宇都宮',
+       '小山',
+       '伊勢崎',
+     ]
+       const answers = [
+       'あさひかわ',
+       'おびひろ',
+       'きたみ',
+       'ことに',
+       'ありおさっぽろ',
+       'すすきの',
+       'とんでん',
+       'はこだて',
+       'ふくずみ',
+       'あおもり',
+       'ごしょがわら',
+       'はちのへぬまだて',
+       'ひろさき',
+       'はなまき',
+       'いしのまきあけぼの',
+       'ありおせんだいいずみ',
+       'こおりやま',
+       'たいら',
+       'ふくしま',
+       'まるだいにいがた',
+       'こうふしょうわ',
+       'ありおうえだ',
+       'ながの',
+       'みなみまつもと',
+       'しずおか',
+       'ぬまづ',
+       'みしま',
+       'ぷらいむつりーあかいけ',
+       'あんじょう',
+       'おわりあさひ',
+       'かりや',
+       'ちた',
+       'やないづ',
+       'あべの',
+       'ありおおおとり',
+       'つくの',
+       'ありおやお',
+       'あかし',
+       'かこがわ',
+       'こうしえん',
+       'あかばね',
+       'あきしま',
+       'あさがや',
+       'あやせ',
+       'うめじま',
+       'おうじ',
+       'おおいまち',
+       'おおもり',
+       'ありおかさい',
+       'かなまち',
+       'かみいたばし',
+       'ありおかめあり',
+       'かめありえきまえ',
+       'ありおきたすな',
+       'きば',
+       'こいわ',
+       'こくりょう',
+       'かみしゃくじいこうえん',
+       'しんじゅくとみひさ',
+       'せんじゅ',
+       'たかさご',
+       'たけのづか',
+       'たていし',
+       'たなし',
+       'たませんたー',
+       'なかの',
+       'ありおにしあらい',
+       'ぷらいすにしあらい',
+       'にしにっぽり',
+       'ねりまたかのだい',
+       'はいじま',
+       'はちおうじ',
+       'ひがしくるめ',
+       'ひがしむらやま',
+       'ひがしやまと',
+       'ひきふね',
+       'みなみおおさわ',
+       'みのわ',
+       'むさしこがねい',
+       'むさしさかい',
+       'よつぎ',
+       'わせだ',
+       'あつぎ',
+       'いせはら',
+       'おおふな',
+       'おだわら',
+       'かつらだい',
+       'かみおおおか',
+       'かみながや',
+       'かわさき',
+       'かわさきみなとちょう',
+       'こぶち',
+       'さがみはら',
+       'ぷらいすしょうなんだい',
+       'しょうなんだい',
+       'ららぽーとしょうなんひらつか',
+       'しんゆりがおか',
+       'せや',
+       'たてば',
+       'たまぷらーざ',
+       'ちがさき',
+       'つなしま',
+       'つるみ',
+       'のうけんだい',
+       'ありおはしもと',
+       'ふじさわ',
+       'みぞのくち',
+       'ぐらんつりーむさしこすぎ',
+       'むさしこすぎえきまえ',
+       'やまとつるま',
+       'ようこうだい',
+       'ららぽーとよこはま',
+       'よこはまべっしょ',
+       'わかばだい',
+       'あねさき',
+       'あびこ',
+       'あびこみなみぐち',
+       'ありおいちはら',
+       'おおたかのもり',
+       'かしわ',
+       'ありおかしわ',
+       'かまがや',
+       'ぷらいすごこう',
+       'ありおそが',
+       'つだぬま',
+       'ながれやま',
+       'ぷらいすのだ',
+       'ふなばし',
+       'まくはり',
+       'まつど',
+       'やちよ',
+       'やばしら',
+       'よつかいどう',
+       'ありおあげお',
+       'あげおえきまえ',
+       'うらわ',
+       'おおみや',
+       'おおみやみやはら',
+       'かすかべ',
+       'かぞ',
+       'ありおかわぐち',
+       'かわごえ',
+       'くき',
+       'こてさし',
+       'さいたまおおい',
+       'ららぽーとしんみさと',
+       'ぷらいせうせんげんだい',
+       'そうか',
+       'にしきちょう',
+       'ありおふかや',
+       'みさと',
+       'わこう',
+       'ありおわしのみや',
+       'ひたち',
+       'りゅうがさき',
+       'うつのみや',
+       'おやま',
+       'いせさき',
+     ]
+       const question = document.querySelector('.question')
+       const answer = document.querySelector('.answer')
+       let index
+       let count = 0
+     
+       function aleatresult() {
+          var message = 'congratulations!!'
+          Swal.fire({
+            title: 'SCORE' + (count - 1),
+            text: message,
+            imageUrl: 'https://unsplash.it/400/200',
+            // 普通の画像も表示できる？
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Custom image',
+          })
+        }
+       setTimeout(aleatresult,30000);
+
+       function next() {
+          console.log('next()');
+
+          if (questions.length) {
+            count ++
+            index = Math.floor(Math.random() * questions.length)
+            question.textContent = questions[index]
+          }
+        }
+
+       answer.addEventListener('keydown', (event) => {
+         if (event.keyCode === 13) {
+           if (answers[index] === answer.value) {
+             questions.splice(index, 1)
+             answers.splice(index, 1)
+             answer.value = ''
+             next()
+            }
+          }
+        })
+     next()
+    </script>
+  </body>
+</html>
