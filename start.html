@@ -31,10 +31,9 @@
         }
 
         h1 {
-         font-size: 60px;
          color: #010101;
-         background: linear-gradient(transparent 70%, #ff7480 70%);
-         font-size: 60px;
+         font-size: 120px;
+         margin: -20px auto 50px;
         }
         p{
           padding: .5em .6em;
@@ -44,14 +43,6 @@
           box-shadow:0px 0px 0px 2px black;
           border-width: 4px;
           border-radius: 4px;
-        }
-
-        .titlecall{
-         width:40%;
-         margin: 0 auto 30px;
-        }
-         .titlecall *{
-         text-align:center;
         }
         .games{
          display:flex;
@@ -68,15 +59,15 @@
         .game3 {
           margin: 10px 50px;
         }
-        .game1:hover {
+        .Game1:hover {
         opacity: 0.8;
         cursor: pointer;
         }
-        .game2:hover {
+        .Game2:hover {
             opacity: 0.8;
             cursor: pointer;
         }
-        .game3:hover {
+        .Game3:hover {
             opacity: 0.8;
             cursor: pointer;
         }
@@ -84,33 +75,45 @@
   </head>
 
   <body>
-      <div class="titlecall">
-            <h1>Menu</h1>
-      </div>
+      <h1>Game of V</h1>
 
       <div class="games">
       <div class="game1">
+        <div class="Game1">
             <button type="button" onclick="location = 'setting/game1.html'">
-                <img src="setting/image/002.png" alt="ボタン１" width="80" height="80"/>
+                <img src="setting/image/008.png" alt="ボタン１" width="80" height="80"/>
             </button>
-            <p>ひらがなをおぼえる▼</p>
+          </div>
+            <p>
+              ひらがなをおぼえる▼<br>
+              <br>
+              制限時間：30秒
+            </p>
       </div>
 
       <div class="game2">
+        <div class="Game2">
             <button type="button" onclick="location = 'setting/game2.html'">
-                <img src="setting/image/002.png" alt="ボタン２" width="80" height="80"/>
+                <img src="setting/image/008.png" alt="ボタン２" width="80" height="80"/>
             </button>
-            <p>かんじをおぼえる▼</p>
+            </div>
+            <p>かんじをおぼえる▼<br>
+              <br>
+              問題数：30問
+            </p>
       </div>
 
       <div class="game3">
+        <div class="Game3">
         <button type="button" onclick="location = 'setting/game3.html'">
-          <img src="setting/image/002.png" alt="ボタン３" width="80" height="80"/>
+          <img src="setting/image/008.png" alt="ボタン３" width="80" height="80"/>
         </button>
-        <p>エリアをおぼえる▼</p>
+        </div>
+        <p>エリアをおぼえる▼<br>
+          <br>
+          問題数：30問
+        </p>
       </div>
     </div>
   </body>
 </html>
-<!-- 各ボタンにリンク貼って飛ばしたい -->
-<!-- タイトルとかの位置をもう少し下げたい -->
