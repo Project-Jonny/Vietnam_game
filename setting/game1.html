@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <title>IY店舗漢字テスト</title>
+    <title>ひらがなをおぼえる</title>
     <style>
      * {
        margin: 0;
@@ -17,8 +17,7 @@
         height: 100%;
      }
      .container {
-       background-image: url("image/006.jpg");
-       background-color:rgba(255,255,255,0.2);
+       background-image: url("image/001.jpg");
        background-blend-mode:lighten;
        background-size: cover;
        background-attachment: fixed;
@@ -458,7 +457,7 @@
        function aleatresult() {
           var message = 'congratulations!!'
           Swal.fire({
-            title: 'SCORE' + (count - 1),
+            title: 'SCORE ' + (count - 1) + '点！',
             text: message,
             imageUrl: 'https://unsplash.it/400/200',
             // 普通の画像も表示できる？
@@ -466,6 +465,10 @@
             imageHeight: 200,
             imageAlt: 'Custom image',
           })
+          .then(function(val){
+            alert("トップページに戻ります")
+            location = '../start.html'
+      });
         }
        setTimeout(aleatresult,30000);
 
