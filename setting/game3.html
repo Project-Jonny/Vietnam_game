@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>グループ分け</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <title>エリアをおぼえる</title>
     <style>
       * {
           background-color: transparent;
@@ -16,8 +17,8 @@
           height: 100%;
         }
         body {
-            background-image: url("image/005.jpg");
-            background-color:rgba(255,255,255,0.2);
+            background-image: url("image/008.jpg");
+            /* background-color:rgba(255,255,255,0.2); */
             background-blend-mode:lighten;
             background-size: cover;
             background-attachment: fixed;
@@ -34,6 +35,45 @@
         z-index: 100;
         }
 
+        .button {
+          position: absolute;
+        }
+        .button:hover {
+        opacity: 0.5;
+        cursor: pointer;
+        }
+        .map {
+          position: absolute;
+          top: 80px;
+          left: 60px;
+
+        }
+        .backscreen {
+          position: absolute;
+          padding: 20px;
+          width: 800px;
+          height: 600px;
+          background-image: url("image/004.jpg");
+          background-size: cover;
+          background-attachment: fixed;
+          background-position: center center;
+          left: 0;
+          top: -40px;
+        }
+        
+        #question {
+          color: white;
+          font-size: 30px;
+          top: 40px;
+          left: 950px;
+        }
+
+        .box {
+          position: absolute;
+          top: 40px;
+          left: 900px;
+        }
+
     </style>
   </head>
 
@@ -43,8 +83,250 @@
         <img src="image/003.png" alt="戻る" width="50" height="60"/>
       </button>
    </div>
+   <div id="question" style="position: absolute; background-color: rgb(65, 41, 18);"></div>
+  <div class="map">
+    <div class="backscreen"></div>
+    <div class="button" style="left:582px;top:0;" onclick="check('北海道')"><img src="image/rect-area-1.png" alt="北海道">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">北海道</div>
+    </div>
+    <div class="button" style="left:582px;top:158px;" onclick="check('東北')"><img src="image/rect-area-2.png" alt="東北">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">東北</div>
+    </div>
+    <div class="button" style="left:549px;top:293px;" onclick="check('関東')"><img src="image/rect-area-4.png" alt="関東">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 60%;">関東</div>
+    </div>
+    <div class="button" style="left:451px;top:255px;" onclick="check('甲信越')"><img src="image/rect-area-3.png" alt="甲信越">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 60%;">甲信越</div>
+    </div>
+    <div class="button" style="left:451px;top:358px;" onclick="check('中部')"><img src="image/rect-area-5.png" alt="中部">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">中部</div>
+    </div>
+    <div class="button" style="left:331px;top:323px;" onclick="check('近畿')"><img src="image/rect-area-6.png" alt="近畿">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 55%;">近畿</div>
+    </div>
+    <div class="mapbutton" style="position: absolute; width: 120px; height: 74px; background-color: #ccc; left: 208px; top: 323px;"></div>
+    <div class="mapbutton" style="position: absolute; width: 100px; height: 50px; background-color: #ccc; left: 228px; top: 420px;"></div>
+    <div class="mapbutton" style="position: absolute; width: 90px; height: 74px; background-color: #ccc; left: 113px; top: 323px;"></div>
+    <div class="mapbutton" style="position: absolute; width: 55px; height: 80px; background-color: #ccc; left: 148px; top: 390px;"></div>
+    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #af76fa; left: 113px; top: 50px;" onclick="check('ネットスーパー')">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">ネットスーパー</div>
+    </div>
+    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #007c29; left: 113px; top: 120px;" onclick="check('食品館')">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">食品館</div>
+    </div>
+    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #fa5c5c; left: 113px; top: 190px;" onclick="check('プライス')">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">プライス</div>
+    </div>
+
+  </div>
+  <div class="box"><img src="image/005.jpg"></div>
   </body>
+  <script>
+    const items = [
+       { q: '旭川', a: '北海道' },
+       { q: '帯広', a: '北海道' },
+       { q: '北見', a: '北海道' },
+       { q: '琴似', a: '北海道' },
+       { q: 'アリオ札幌', a: '北海道' },
+       { q: 'すすきの', a: '北海道' },
+       { q: '屯田', a: '北海道' },
+       { q: '函館', a: '北海道' },
+       { q: '福住', a: '北海道' },
+       { q: '青森', a: '東北' },
+       { q: '五所川原', a: '東北' },
+       { q: '八戸沼館', a: '東北' },
+       { q: '弘前', a: '東北' },
+       { q: '花巻', a: '東北' },
+       { q: '石巻あけぼの', a: '東北' },
+       { q: 'アリオ仙台泉', a: '東北' },
+       { q: '郡山', a: '東北' },
+       { q: '平', a: '東北' },
+       { q: '福島', a: '東北' },
+       { q: '丸大新潟', a: '信越' },
+       { q: '甲府昭和', a: '信越' },
+       { q: 'アリオ上田', a: '信越' },
+       { q: '長野', a: '信越' },
+       { q: '南松本', a: '信越' },
+       { q: '静岡', a: '中京' },
+       { q: '沼津', a: '中京' },
+       { q: '三島', a: '中京' },
+       { q: 'プライムツリー赤池', a: '中京' },
+       { q: '安城', a: '中京' },
+       { q: '尾張旭', a: '中京' },
+       { q: '刈谷', a: '中京' },
+       { q: '知多', a: '中京' },
+       { q: '柳津', a: '中京' },
+       { q: 'あべの', a: '西日本' },
+       { q: 'アリオ鳳', a: '西日本' },
+       { q: '津久野', a: '西日本' },
+       { q: 'アリオ八尾', a: '西日本' },
+       { q: '明石', a: '西日本' },
+       { q: '加古川', a: '西日本' },
+       { q: '甲子園', a: '西日本' },
+       { q: '赤羽', a: '首都圏' },
+       { q: '昭島', a: '首都圏' },
+       { q: '阿佐ヶ谷', a: '食品館' },
+       { q: '綾瀬', a: '首都圏' },
+       { q: '梅島', a: '食品館' },
+       { q: '王子', a: '食品館' },
+       { q: '大井町', a: '首都圏' },
+       { q: '大森', a: '首都圏' },
+       { q: 'アリオ葛西', a: '首都圏' },
+       { q: '金町', a: '首都圏' },
+       { q: '上板橋', a: '首都圏' },
+       { q: 'アリオ亀有', a: '首都圏' },
+       { q: '亀有駅前', a: '首都圏' },
+       { q: 'アリオ北砂', a: '首都圏' },
+       { q: '木場', a: '首都圏' },
+       { q: '小岩', a: '首都圏' },
+       { q: '国領', a: '首都圏' },
+       { q: '上石神井公園', a: '食品館' },
+       { q: '新宿富久', a: '食品館' },
+       { q: '千住', a: '食品館' },
+       { q: '高砂', a: '首都圏' },
+       { q: '竹の塚', a: '首都圏' },
+       { q: '立石', a: '食品館' },
+       { q: '田無', a: '首都圏' },
+       { q: '多摩センター', a: '首都圏' },
+       { q: '中野', a: '食品館' },
+       { q: 'アリオ西新井', a: '首都圏' },
+       { q: 'プライス西新井', a: 'プライス' },
+       { q: '西日暮里', a: 'ネットスーパー' },
+       { q: '練馬高野台', a: '食品館' },
+       { q: '拝島', a: '首都圏' },
+       { q: '八王子', a: '首都圏' },
+       { q: '東久留米', a: '首都圏' },
+       { q: '東村山', a: '首都圏' },
+       { q: '東大和', a: '首都圏' },
+       { q: '曳舟', a: '首都圏' },
+       { q: '南大沢', a: '首都圏' },
+       { q: '三ノ輪', a: '食品館' },
+       { q: '武蔵小金井', a: '首都圏' },
+       { q: '武蔵境', a: '首都圏' },
+       { q: '四つ木', a: '首都圏' },
+       { q: '早稲田', a: '首都圏' },
+       { q: '厚木', a: '食品館' },
+       { q: '伊勢原', a: '首都圏' },
+       { q: '大船', a: '首都圏' },
+       { q: '小田原', a: '首都圏' },
+       { q: '桂台', a: '首都圏' },
+       { q: '上大岡', a: '食品館' },
+       { q: '上永谷', a: '首都圏' },
+       { q: '川崎', a: '首都圏' },
+       { q: '川崎港町', a: '首都圏' },
+       { q: '古淵', a: '首都圏' },
+       { q: '相模原', a: '首都圏' },
+       { q: 'プライス湘南台', a: 'プライス' },
+       { q: '湘南台', a: '首都圏' },
+       { q: 'ららぽーと湘南平塚', a: '食品館' },
+       { q: '新百合ヶ丘', a: '首都圏' },
+       { q: '瀬谷', a: '首都圏' },
+       { q: '立場', a: '首都圏' },
+       { q: 'たまプラーザ', a: '首都圏' },
+       { q: '茅ヶ崎', a: '首都圏' },
+       { q: '綱島', a: '首都圏' },
+       { q: '鶴見', a: '首都圏' },
+       { q: '能見台', a: '首都圏' },
+       { q: 'アリオ橋本', a: '首都圏' },
+       { q: '藤沢', a: '首都圏' },
+       { q: '溝ノ口', a: '首都圏' },
+       { q: 'グランツリー武蔵小杉', a: '首都圏' },
+       { q: '武蔵小杉駅前', a: '首都圏' },
+       { q: '大和鶴間', a: '首都圏' },
+       { q: '洋光台', a: '首都圏' },
+       { q: 'ららぽーと横浜', a: '首都圏' },
+       { q: '横浜別所', a: '首都圏' },
+       { q: '若葉台', a: '首都圏' },
+       { q: '姉崎', a: '首都圏' },
+       { q: '我孫子', a: '首都圏' },
+       { q: '我孫子南口', a: '首都圏' },
+       { q: 'アリオ市原', a: '首都圏' },
+       { q: 'おおたかの森', a: '食品館' },
+       { q: '柏', a: '首都圏' },
+       { q: 'アリオ柏', a: '首都圏' },
+       { q: '鎌ヶ谷', a: '食品館' },
+       { q: 'プライス五香', a: 'プライス' },
+       { q: 'アリオ蘇我', a: '首都圏' },
+       { q: '津田沼', a: '首都圏' },
+       { q: '流山', a: '首都圏' },
+       { q: 'プライス野田', a: 'プライス' },
+       { q: '船橋', a: '首都圏' },
+       { q: '幕張', a: '首都圏' },
+       { q: '松戸', a: '首都圏' },
+       { q: '八千代', a: '首都圏' },
+       { q: '八柱', a: '首都圏' },
+       { q: '四街道', a: '首都圏' },
+       { q: 'アリオ上尾', a: '首都圏' },
+       { q: '上尾駅前', a: '首都圏' },
+       { q: '浦和', a: '首都圏' },
+       { q: '大宮', a: '首都圏' },
+       { q: '大宮宮原', a: '首都圏' },
+       { q: '春日部', a: '首都圏' },
+       { q: '加須', a: '首都圏' },
+       { q: 'アリオ川口', a: '首都圏' },
+       { q: '川越', a: '食品館' },
+       { q: '久喜', a: '首都圏' },
+       { q: '小手指', a: '食品館' },
+       { q: '埼玉大井', a: '食品館' },
+       { q: 'ららぽーと新三郷', a: '食品館' },
+       { q: 'プライスせんげん台', a: 'プライス' },
+       { q: '草加', a: '首都圏' },
+       { q: '錦町', a: '首都圏' },
+       { q: 'アリオ深谷', a: '首都圏' },
+       { q: '三郷', a: '首都圏' },
+       { q: '和光', a: '首都圏' },
+       { q: 'アリオ鷲宮', a: '首都圏' },
+       { q: '日立', a: '北関東' },
+       { q: '竜ケ崎', a: '首都圏' },
+       { q: '宇都宮', a: '北関東' },
+       { q: '小山', a: '北関東' },
+       { q: '伊勢崎', a: '北関東' },
+    ]
+    let count = 0
+    let target
+    var jump = function(){
+      location = '../start.html'
+    }
+     function next() {
+       if (items.length === 1) {
+        Swal.fire({
+        icon: 'success',
+        title: count,
+        text: 'congratulations!',
+        })
+        .then(function(val){
+            alert("トップページに戻ります")
+            location = '../start.html'
+      });
+       }
+
+       target = items.splice(Math.floor(Math.random() * items.length), 1)[0]
+       question.textContent = target.q
+     }
+     next()
+
+     function check(area) {
+       if (target.a === area) {
+         alert('○')
+         count++
+       } else {
+         alert('✗')
+       }
+       next()
+     }
+
+  </script>
 </html>
 
-<!-- 使えそうなやつ -->
-<!-- https://q-az.net/elements-drag-and-drop/ -->
+<!-- 
+北海道
+東北
+信越
+中京
+西日本
+首都圏
+北関東
+ネットスーパー
+食品館
+プライス
+-->
