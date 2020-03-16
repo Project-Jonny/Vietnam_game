@@ -42,36 +42,50 @@
         opacity: 0.5;
         cursor: pointer;
         }
+        .setbutton {
+          position: absolute;
+        }
+        .setbutton:hover {
+        opacity: 0.5;
+        cursor: pointer;
+        }
         .map {
           position: absolute;
           top: 80px;
-          left: 60px;
+          left: 80px;
 
         }
         .backscreen {
           position: absolute;
-          padding: 20px;
-          width: 800px;
+          padding: .5em .6em;
+          width: 700px;
           height: 600px;
-          background-image: url("image/004.jpg");
-          background-size: cover;
-          background-attachment: fixed;
-          background-position: center center;
+          background-color: black;
+          border: 2px solid white;
+          box-shadow:0px 0px 0px 2px black;
+          border-width: 4px;
+          border-radius: 4px;
           left: 0;
           top: -40px;
         }
         
         #question {
           color: white;
-          font-size: 30px;
+          font-size: 45px;
           top: 40px;
-          left: 950px;
+          left: 820px;
+          border: 2px solid white;
+          box-shadow:0px 0px 0px 2px black;
+          border-width: 4px;
+          border-radius: 4px;
+          padding: .5em .6em;
         }
 
         .box {
           position: absolute;
-          top: 40px;
-          left: 900px;
+          top: 580px;
+          left: 720px;
+          background-color: black;
         }
 
     </style>
@@ -83,39 +97,43 @@
         <img src="image/003.png" alt="戻る" width="50" height="60"/>
       </button>
    </div>
-   <div id="question" style="position: absolute; background-color: rgb(65, 41, 18);"></div>
+   <div id="question" style="position: absolute; background-color: black;"></div>
   <div class="map">
     <div class="backscreen"></div>
-    <div class="button" style="left:582px;top:0;" onclick="check('北海道')"><img src="image/rect-area-1.png" alt="北海道">
+    <div class="button" style="left:522px;top:0;" onclick="check('北海道')"><img src="image/rect-area-1.png" alt="北海道">
       <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">北海道</div>
     </div>
-    <div class="button" style="left:582px;top:158px;" onclick="check('東北')"><img src="image/rect-area-2.png" alt="東北">
+    <div class="button" style="position: absolute; width: 97px; height: 100px; background-color: rgb(123, 198, 202); left: 522px; top: 158px;" onclick="check('東北')">
       <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">東北</div>
     </div>
-    <div class="button" style="left:549px;top:293px;" onclick="check('関東')"><img src="image/rect-area-4.png" alt="関東">
-      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 60%;">関東</div>
+    <div class="button" style="position: absolute; width: 97px; height: 70px; background-color: rgb(133, 194, 113); left: 522px; top: 263px;" onclick="check('北関東')">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">北関東</div>
     </div>
-    <div class="button" style="left:451px;top:255px;" onclick="check('甲信越')"><img src="image/rect-area-3.png" alt="甲信越">
-      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 60%;">甲信越</div>
+  <div class="setbutton">
+    <div class="button1" style="position: absolute; width: 97px; height: 89px; background-color: rgb(247, 133, 133); left: 490px; top: 358px;" onclick="check('首都圏')"></div>
+    <div class="button2" style="position: absolute; width: 97px; height: 109px; background-color: rgb(247, 133, 133); left: 522px; top: 338px;" onclick="check('首都圏')">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 35%;">首都圏</div>
     </div>
-    <div class="button" style="left:451px;top:358px;" onclick="check('中部')"><img src="image/rect-area-5.png" alt="中部">
-      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">中部</div>
+  </div>
+    
+    <div class="button" style="left:391px;top:255px;" onclick="check('信越')"><img src="image/rect-area-3.png" alt="信越">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 60%;">信越</div>
     </div>
-    <div class="button" style="left:331px;top:323px;" onclick="check('近畿')"><img src="image/rect-area-6.png" alt="近畿">
-      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 55%;">近畿</div>
+    <div class="button" style="left:391px;top:358px;" onclick="check('中京')"><img src="image/rect-area-5.png" alt="中京">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">中京</div>
     </div>
-    <div class="mapbutton" style="position: absolute; width: 120px; height: 74px; background-color: #ccc; left: 208px; top: 323px;"></div>
-    <div class="mapbutton" style="position: absolute; width: 100px; height: 50px; background-color: #ccc; left: 228px; top: 420px;"></div>
-    <div class="mapbutton" style="position: absolute; width: 90px; height: 74px; background-color: #ccc; left: 113px; top: 323px;"></div>
-    <div class="mapbutton" style="position: absolute; width: 55px; height: 80px; background-color: #ccc; left: 148px; top: 390px;"></div>
-    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #af76fa; left: 113px; top: 50px;" onclick="check('ネットスーパー')">
-      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">ネットスーパー</div>
+    <div class="button" style="left:271px;top:323px;" onclick="check('西日本')"><img src="image/rect-area-6.png" alt="西日本">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 55%;">西日本</div>
     </div>
-    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #007c29; left: 113px; top: 120px;" onclick="check('食品館')">
-      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">食品館</div>
-    </div>
-    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #fa5c5c; left: 113px; top: 190px;" onclick="check('プライス')">
+    <div class="mapbutton" style="position: absolute; width: 120px; height: 74px; background-color: #ccc; left: 148px; top: 323px;"></div>
+    <div class="mapbutton" style="position: absolute; width: 100px; height: 50px; background-color: #ccc; left: 168px; top: 420px;"></div>
+    <div class="mapbutton" style="position: absolute; width: 90px; height: 74px; background-color: #ccc; left: 53px; top: 323px;"></div>
+    <div class="mapbutton" style="position: absolute; width: 55px; height: 80px; background-color: #ccc; left: 88px; top: 390px;"></div>
+    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #fff; left: 53px; top: 50px;" onclick="check('プライス')">
       <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">プライス</div>
+    </div>
+    <div class="button" style="position: absolute; width: 220px; height: 50px; background-color: #fff; left: 53px; top: 120px;" onclick="check('食品館')">
+      <div style="position: absolute; transform: translate(-50%,-50%); top: 50%; left: 50%;">食品館</div>
     </div>
 
   </div>
@@ -180,7 +198,7 @@
        { q: '木場', a: '首都圏' },
        { q: '小岩', a: '首都圏' },
        { q: '国領', a: '首都圏' },
-       { q: '上石神井公園', a: '食品館' },
+       { q: '石神井公園', a: '食品館' },
        { q: '新宿富久', a: '食品館' },
        { q: '千住', a: '食品館' },
        { q: '高砂', a: '首都圏' },
@@ -191,7 +209,6 @@
        { q: '中野', a: '食品館' },
        { q: 'アリオ西新井', a: '首都圏' },
        { q: 'プライス西新井', a: 'プライス' },
-       { q: '西日暮里', a: 'ネットスーパー' },
        { q: '練馬高野台', a: '食品館' },
        { q: '拝島', a: '首都圏' },
        { q: '八王子', a: '首都圏' },
@@ -282,13 +299,14 @@
        { q: '小山', a: '北関東' },
        { q: '伊勢崎', a: '北関東' },
     ]
+    // 158問
     let count = 0
     let target
     var jump = function(){
       location = '../start.html'
     }
      function next() {
-       if (items.length === 1) {
+       if (items.length === 127) {
         Swal.fire({
         icon: 'success',
         title: count,
@@ -310,7 +328,7 @@
          alert('○')
          count++
        } else {
-         alert('✗')
+         alert('✗\n正解は『' + target.a + '』です！')
        }
        next()
      }
