@@ -225,14 +225,14 @@
          ['うつのみや' , '宇都宮' , '宇都官' , '𡧃都宮'],
          ['おやま' , '小山' , '少山' , '小出'],
          ['いせさき' , '伊勢崎' , '伊㔟崎' , '伊勢﨑'],
-        //  146問
+        //  全146問
      ]
 
      function next() {
-       if (items.length === 117) {
+       if (items.length === 127) {
         Swal.fire({
         icon: 'success',
-        title: '30問中 ' + count + '問正解！',
+        title: '20問中 ' + count + '問正解！',
         text: 'congratulations!',
         })
         .then(function(val){
@@ -262,9 +262,7 @@
          button.textContent = x
          button.addEventListener('click', () => {
            if (x === a) {
-            //  kaisetu.textContent = '正解'
              count++
-             // alert('正解')
            } else {
             //  kaisetu.textContent = '不正解！\n正解は『' + a + '』です！'
              alert('不正解！\n正解は『' + a + '』です！')
