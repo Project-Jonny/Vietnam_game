@@ -23,10 +23,6 @@
             background-size: cover;
             background-attachment: fixed;
             background-position: center center;
-            /* display: flex; */
-            /* flex-direction: column; */
-            /* justify-content: center; */
-            /* align-items: center; */
         }
         .modal{
         position: fixed;
@@ -299,14 +295,14 @@
        { q: '小山', a: '北関東' },
        { q: '伊勢崎', a: '北関東' },
     ]
-    // 158問
+    // 全158問
     let count = 0
     let target
     var jump = function(){
       location = '../start.html'
     }
      function next() {
-       if (items.length === 127) {
+       if (items.length === 137) {
         Swal.fire({
         icon: 'success',
         title: count + '問正解！',
@@ -335,16 +331,3 @@
 
   </script>
 </html>
-
-<!-- 
-北海道
-東北
-信越
-中京
-西日本
-首都圏
-北関東
-ネットスーパー
-食品館
-プライス
--->
